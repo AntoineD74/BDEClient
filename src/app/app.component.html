@@ -1,3 +1,52 @@
-<h1>
-  {{title}}
-</h1>
+<p-growl [(value)]="msgs"></p-growl>
+
+
+<md-sidenav-container class="">
+  <md-sidenav align="end" #sidenav mode="over" opened="false">
+    <div class="avatar-container">
+      <h3 *ngIf="isLoggedIn()">
+        Antoine Dcr
+      </h3>
+      <h3 *ngIf="!isLoggedIn()">
+        Anonyme
+      </h3>
+      <img class="avatar-image" src="assets/default_avatar.png" />
+      <p *ngIf="isLoggedIn()">
+        Vice-trésorier
+      </p>
+      <p *ngIf="!isLoggedIn()">
+        Bel inconnu
+      </p>
+    </div>
+    <button class="btn-login" *ngIf="!isLoggedIn()" md-button color="primary" (click)="openDialog()"><md-icon>input</md-icon> Connexion</button>
+    <button class="btn-login" *ngIf="isLoggedIn()" md-button color="warn" (click)="logout()">Déconnexion</button>
+    <md-nav-list style="text-align:center">
+
+      <a md-list-item [routerLink]="['/my-profil']" *ngIf="isLoggedIn()" href="#" ><md-icon>account_box</md-icon> PROFIL</a>
+      <a md-list-item [routerLink]="['/my-events']" *ngIf="isLoggedIn()" href="#" ><md-icon>event</md-icon> EVENEMENTS</a>
+      <md-divider *ngIf="isLoggedIn()"></md-divider>
+      <a md-list-item href="#" ><md-icon>message</md-icon> NOUS CONTACTER</a>
+    </md-nav-list>
+
+  </md-sidenav>
+
+  <md-toolbar color="primary">
+    <span><img class="logo" src="assets/logo.png">Bureau des étudiants - Campus YNOV LYON</span>
+    <span class="fill-space"></span>
+
+    <button md-icon-button  (click)="sidenav.toggle()"><md-icon>account_circle</md-icon></button>
+    <md-toolbar-row class="second-row">
+      <span class="fill-space"></span>
+      <button [routerLink]="['/home']" md-button>Accueil</button>
+      <button md-button>L'école</button>
+      <button [routerLink]="['/events']" md-button>Evènements</button>
+      <button md-button>Campus</button>
+      <button md-button>Maisons</button>
+      <button md-button>Galerie</button>
+      <button md-button>Contact</button>
+    </md-toolbar-row>
+
+  </md-toolbar>
+  <router-outlet></router-outlet>
+
+</md-sidenav-container>

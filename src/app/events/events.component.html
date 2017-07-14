@@ -1,0 +1,72 @@
+<div class="first-section mat-primary">
+  <div class="main-card-container">
+    <md-card class="main-card">
+
+      <md-card-title>Nos évènements</md-card-title>
+
+
+      <md-card-content>
+        <p>
+          Le bureau des étudiants organise toutes sortes d'évènements tout au long de l'année, n'en ratez aucun !
+        </p>
+
+
+      </md-card-content>
+    </md-card>
+    <div class="divider">
+
+    </div>
+    <md-card>
+      <md-card-title>Recherche</md-card-title>
+      <md-card-content>
+        <md-input-container>
+          <input mdInput type="text" placeholder="Nom de l'évènement">
+        </md-input-container>
+        <br />
+        <span>Type d'évènement</span>
+        <p-multiSelect [maxSelectedLabels]="5" [defaultLabel]="Choisir" [options]="eventTypes" [(ngModel)]="selectedEventTypes"></p-multiSelect>
+      </md-card-content>
+      <md-card-actions>
+        <button color="primary" class="wdt-50" md-button><md-icon>search</md-icon>Rechercher</button>
+          <button color="accent" class="wdt-50" md-button><md-icon>clear</md-icon>Reset</button>
+      </md-card-actions>
+    </md-card>
+    <div class="divider">
+
+    </div>
+    <md-grid-list cols="3" rowHeight="1:1">
+      <md-grid-tile *ngFor="let event of events">
+        <md-card>
+          <md-card-title>
+            {{event.titre}}
+          </md-card-title>
+          <img md-card-image src="assets/diapo-bde.jpg">
+          <md-card-content>
+            <div>
+              <div class="label-event-detail">Date</div>
+              <div class="event-detail">{{event.date}}</div>
+            </div>
+            <div>
+              <div class="label-event-detail">Lieu</div>
+              <div class="event-detail">{{event.lieu}}</div>
+            </div>
+            <div>
+              <div class="label-event-detail">Billets</div>
+              <div class="event-detail"><a href="#">yurplan</a></div>
+            </div>
+            <div>
+              <div class="label-event-detail description">Description</div>
+              <div class="event-detail description">{{event.description}}</div>
+            </div>
+          </md-card-content>
+          <md-card-actions>
+            <button md-button><md-icon>details</md-icon> Voir les détails</button>
+            <button md-button color="primary"><md-icon>done</md-icon> J'y participe !</button>
+          </md-card-actions>
+        </md-card>
+      </md-grid-tile>
+
+    </md-grid-list>
+
+  </div>
+</div>

@@ -1,0 +1,16 @@
+<h1 md-dialog-title>Se connecter</h1>
+<form novalidate name="loginForm" >
+  <md-dialog-content>
+    <md-input-container>
+      <input mdInput name="email" [(ngModel)]="email" type="text" placeholder="Adresse mail YNOV">
+    </md-input-container>
+    <md-input-container>
+      <input mdInput name="pwd" [(ngModel)]="pwd"  type="password" placeholder="Mot de passe">
+    </md-input-container>
+    <br />
+    <a href="#">Mot de passe oublié ?</a>
+  </md-dialog-content>
+  <md-dialog-actions>
+    <button color="primary" (click)="login()" class="btn-login" md-button><md-icon>input</md-icon> Connexion</button>
+  </md-dialog-actions>
+</form>
